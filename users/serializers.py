@@ -13,7 +13,5 @@ class UserSerializer(serializers.ModelSerializer):
             "phone_number",
             "avatar",
             "city",
-            "payments",
             "password",
         ]
-

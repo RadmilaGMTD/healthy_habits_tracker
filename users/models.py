@@ -8,6 +8,7 @@ class User(AbstractUser):
     phone_number = models.CharField(max_length=15, blank=True, null=True, verbose_name="Телефон")
     avatar = models.ImageField(upload_to="users/avatars/", blank=True, null=True, verbose_name="Аватар")
     city = models.CharField(max_length=50, blank=True, null=True, verbose_name="Город")
+    tg_chat_id = models.CharField(max_length=50, blank=True, null=True, verbose_name="Телеграм chat-id")
 
     USERNAME_FIELD = "email"
     REQUIRED_FIELDS = []
