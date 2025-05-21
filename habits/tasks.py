@@ -12,7 +12,7 @@ def send_reminder_habits():
     now = timezone.now()
     current_time = now.time()
 
-    habits = Habit.objects.filter(user__isnull=False, user__tg_chat_id__isnull=False)
+    habits = Habit.objects.select_related("user").filter(user__tg_chat_id__isnull=False)
 
     for habit in habits:
         habit_time = (datetime.min + habit.time).time()

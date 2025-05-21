@@ -6,7 +6,7 @@ from users.models import User
 from .models import Habit
 
 
-class MaterialsTestCase(APITestCase):
+class HabitsTestCase(APITestCase):
     def setUp(self):
         self.user = User.objects.create(email="test_user@mail.ru")
         self.habit = Habit.objects.create(

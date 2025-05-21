@@ -15,15 +15,21 @@ class HabitCreateApiView(generics.CreateAPIView):
 
 
 class HabitListApiView(generics.ListAPIView):
+    serializer_class = HabitSerializer
+    pagination_class = HabitsPaginator
+    permission_classes = [IsOwner]
+
+    def get_queryset(self):
+        return Habit.objects.filter(user=self.request.user)
+
+
+class PublicHabitListApiView(generics.ListAPIView):
     serializer_class = PublicHabitSerializer
-    queryset = Habit.objects.all()
     pagination_class = HabitsPaginator
     permission_classes = [IsPublicOrIsOwner]
 
     def get_queryset(self):
-        user_habits = Habit.objects.filter(user=self.request.user)
-        public_habits = Habit.objects.filter(is_public=True)
-        return user_habits | public_habits
+        return Habit.objects.filter(is_public=True)
 
 
 class HabitRetrieveApiView(generics.RetrieveAPIView):
