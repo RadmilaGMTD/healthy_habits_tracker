@@ -20,7 +20,7 @@ jobs:
           version: 1.8.3
 
       - name: Установить линтеры через Poetry
-        run: poetry add --group lint flake8 isort black
+        run: poetry install --with lint
 
       - name: Запустить Flake8
         run: poetry run flake8 .
