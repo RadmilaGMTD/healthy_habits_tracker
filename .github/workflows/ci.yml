@@ -6,29 +6,29 @@ jobs:
   lint:
     runs-on: ubuntu-latest
     steps:
-      - name: Проверить код
+      - name: Check out code
         uses: actions/checkout@v3
 
-      - name: Установить Python
+      - name: Set up Python
         uses: actions/setup-python@v4
         with:
           python-version: '3.12'
 
-      - name: Установить Poetry
+      - name: Install Poetry
         uses: snok/install-poetry@v1
         with:
           version: 1.8.3
 
-      - name: Установить линтеры через Poetry
+      - name: Install lint
         run: poetry install --with lint
 
-      - name: Запустить Flake8
+      - name: Run Flake8
         run: poetry run flake8 .
 
-      - name: Запустить isort (только проверка)
+      - name: Run isort
         run: poetry run isort --check-only .
 
-      - name: Запустить black (только проверка)
+      - name: Run black
         run: poetry run black --check .
 
   test:
