@@ -23,13 +23,13 @@ jobs:
         run: poetry add --group lint flake8 isort black
 
       - name: Run Flake8
-        run: poetry run flake8 .
+        run: flake8 .
 
       - name: Run isort (check only)
-        run: poetry run isort --check-only .
+        run: isort --check-only .
 
       - name: Run black (check only)
-        run: poetry run black --check .
+        run: black --check .
 
   test:
     runs-on: ubuntu-latest
