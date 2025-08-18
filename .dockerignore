@@ -1,0 +1,16 @@
+.git/
+.venv/
+.idea/
+.env
+*.sqlite3
+*.log
+*.pyc
+*.pyo
+__pycache__/
+/static_collected
+/dump.rdb
+docker-compose.yml
+.flake8
+.env.example
+.dockerignore
+.gitignore
