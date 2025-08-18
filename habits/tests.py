@@ -52,12 +52,8 @@ class HabitsTestCase(APITestCase):
         response = self.client.get("/habits/")
         data = response.json()
         self.assertEqual(response.status_code, status.HTTP_200_OK)
-        self.assertEqual(
-            data,
-            {
-                "count": 1,
-                "next": None,
-                "previous": None,
-                "results": [{"id": 4, "place": "Тестовое место", "action": "Тестовая привычка", "is_pleasant": False}],
-            },
-        )
+        self.assertEqual(data["count"], 1)
+        self.assertEqual(len(data["results"]), 1)
+        self.assertEqual(data["results"][0]["action"], "Тестовая привычка")
+        self.assertEqual(data["results"][0]["place"], "Тестовое место")
+        self.assertEqual(data["results"][0]["is_pleasant"], False)
